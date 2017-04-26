@@ -1,8 +1,5 @@
 #https://en.wikipedia.org/wiki/RC4
 #Pseuduoooo codeee
-
-
-
 def KSA(key):
     keylength = len(key)
 
@@ -14,6 +11,7 @@ def KSA(key):
         S[i], S[j] = S[j], S[i]  # swap
 
     return S
+
 
 def PRGA(S):
     i = 0
@@ -30,10 +28,12 @@ def PRGA(S):
 def RC4(key):
     S = KSA(key)
     return PRGA(S)
-https://github.com/ghs9/crypt-keeper.git
+
+
 if __name__ == '__main__':
-    key = 'Key'
+    # key = 'Key'
     # plaintext = 'Plaintextaoeuoeuaoeu'
+    
     import requests
     r = requests.get('http://www.gutenberg.org/files/10/10-h/10-h.htm')
     text = r.text
@@ -49,6 +49,4 @@ if __name__ == '__main__':
     encrypted = ""
     for char in r.text:
         encrypted += "%02X" % (ord(char) ^ keystream.next())
-
-
     print encrypted
