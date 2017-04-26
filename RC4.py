@@ -31,7 +31,11 @@ def RC4(key):
 
 
 if __name__ == '__main__':
+    from Crypto.Hash import SHA384
+    from Crypto import Random
     key = 'Key'
+    nonce = Random.new().read(16)
+    key = SHA384.new(key+nonce).digest()
     # plaintext = 'Plaintextaoeuoeuaoeu'
 
     import requests

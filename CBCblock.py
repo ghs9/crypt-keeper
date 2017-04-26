@@ -2,6 +2,11 @@ from Crypto.Cipher import AES
 
 
 key = "0123456789ABCDEF"
+from Crypto.Hash import SHA256
+from Crypto import Random
+key = 'Key'
+nonce = Random.new().read(16)
+key = SHA256.new(key+nonce).digest()
 iv =  "0000000000009001"
 plaintext = ""
 with open('pg10.txt', 'r') as file:
