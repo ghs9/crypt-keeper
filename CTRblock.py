@@ -10,7 +10,7 @@ with open('pg10.txt', 'r') as file:
 
 
 
-print plaintext
+# print plaintext
 
 
 
@@ -19,4 +19,12 @@ print plaintext
 ctr = Crypto.Util.Counter.new(128, initial_value=long(iv.encode("hex"), 16))
 
 cipher = Crypto.Cipher.AES.new(key, Crypto.Cipher.AES.MODE_CTR, counter=ctr)
-print cipher.encrypt(plaintext)
+encrypted = cipher.encrypt(plaintext)
+file = open("encryptedCTR.txt", 'w+')
+file.write(encrypted)
+
+ctr = Crypto.Util.Counter.new(128, initial_value=long(iv.encode("hex"), 16))
+strng = Crypto.Cipher.AES.new(key, Crypto.Cipher.AES.MODE_CTR, counter=ctr).decrypt(encrypted)
+
+file = open("decryptedCTR.txt", 'w=')
+file.write(strng)
