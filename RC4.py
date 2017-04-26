@@ -30,7 +30,7 @@ def PRGA(S):
 def RC4(key):
     S = KSA(key)
     return PRGA(S)
-
+https://github.com/ghs9/crypt-keeper.git
 if __name__ == '__main__':
     key = 'Key'
     # plaintext = 'Plaintextaoeuoeuaoeu'
@@ -50,5 +50,5 @@ if __name__ == '__main__':
     for char in r.text:
         encrypted += "%02X" % (ord(char) ^ keystream.next())
 
-    
+
     print encrypted
