@@ -31,9 +31,9 @@ def RC4(key):
 
 
 if __name__ == '__main__':
-    # key = 'Key'
+    key = 'Key'
     # plaintext = 'Plaintextaoeuoeuaoeu'
-    
+
     import requests
     r = requests.get('http://www.gutenberg.org/files/10/10-h/10-h.htm')
     text = r.text
@@ -44,9 +44,11 @@ if __name__ == '__main__':
     key = convert_key(key)
     keystream = RC4(key)
 
-    print "file loaded"
+    # print "file loaded"
     import sys
     encrypted = ""
     for char in r.text:
         encrypted += "%02X" % (ord(char) ^ keystream.next())
-    print encrypted
+    # print encrypted
+    file = open('RC4encrypted.txt', 'w+')
+    file.write(encrypted)
